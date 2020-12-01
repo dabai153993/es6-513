@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <title>作业</title>
+</head>
+
+<body>
+    <h2>旅游列表</h2>
+    <ul id="box"></ul>
+    <script>
+        // function getData() {
+            //     //创建promisp对象
+            //     let p = new Promise((resolve, reject) => {
+            //         $.getJSON("../json/01.json", function (res) {
+            //             resolve(res);
+            //         });
+            //     });
+
+            //     return p;
+            // }
+            // //调用
+            // getData().then(function (res) {
+            //     $.getJSON("../json/01.json", function (res) {
+            //         let data = res.matchedProducts;
+            //         for (var i = 0; i < data.length; i++) {
+            //             var $li = $(`<li>序号：${data[i].collection_num}-- 标题：${data[i].pro_title}</li>`);
+            //             $('#box').append($li);
+            //         }
+            //     });
+            // }, function (err) {
+            //     console.log(err);
+            // })
+        // }
+
+        //Promise.all方法
+        function getData(url) {
+                //创建promisp对象
+                let p = new Promise((resolve, reject) => {
+                    $.getJSON(url, function (res) {
+                        resolve(res);
+                    });
+                });
+                return p;
+            }
+            //调用
+            Promise.all([getData("../json/01.json"), getData("../json/02.json"), getData("../json/03.json")]).then(function (res) {
+                for(var j =0;j<res.length;j++){
+                    let data = res[j].matchedProducts;
+                for (var i = 0; i < data.length; i++) {
+                    var $li = $(`<li>序号：${data[i].collection_num}-- 标题：${data[i].pro_title}</li>`);
+                    $('#box').append($li);
+                //  console.log(res[i].matchedProducts);
+                    console.log(res);
+                }
+                }
+            })
+            // getData()
+    </script>
+</body>
+
+</html>

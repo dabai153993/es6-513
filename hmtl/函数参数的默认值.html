@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数的默认值</title>
+</head>
+<body>
+    <script>
+        // function aa(name){
+        //     name = name ||'唐朝峰';
+        //     var nn = name.trim();
+        //     console.log(nn);
+        // }
+        // aa('猫')
+        // aa()
+
+        function aa(name = '唐朝峰'){
+            var nn = name.trim();
+            console.log(nn);
+        }
+        aa('猫')
+        aa()
+    </script>
+</body>
+</html>
